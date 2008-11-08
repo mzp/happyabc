@@ -1,0 +1,24 @@
+Installing Happy ABC on a Unix machine
+======================================
+
+PREREQUISITES
+-------------
+
+* ocaml 3.10 or latter
+* omake
+* GODI with jane-street-core extlib ounit
+
+
+INSTALLATION INSTRUCTIONS
+-------------------------
+
+If you type:
+
+   $ omake install
+
+then install to a default directory(/usr/local/bin).
+
+Or,you want to install to another directory:
+
+   $ omake install PREFIX=/path/to/
+
