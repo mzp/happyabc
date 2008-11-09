@@ -11,6 +11,7 @@ function checkout(){
 #    omake clean
     cd -
 }
+echo '### creating start... ###'
 echo $VERSION
 echo $FULL_VERSION
 
@@ -31,4 +32,13 @@ echo '### copy driver ###'
 sed "s/<Version>/${FULL_VERSION}/" habc > ${dir}/habc
 cp extra/* ${dir}
 
+echo '### install check ###'
+cd $dir
+omake install PREFIX=./test-dist
+ls ./test-dir/bin/habc     || exit 1
+ls ./test-dir/bin/habc-xml || exit 1
+ls ./test-dir/bin/habc-scm || exit 1
+
+echo '### tagging ###'
+echo '### package ###'
 tar cvjf ${dir}.tar.bz2 ${dir}
