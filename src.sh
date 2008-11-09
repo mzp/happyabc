@@ -24,7 +24,7 @@ echo '### checkout(xml) ###'
 checkout 'svn export http://www.libspark.org/svn/ocaml/abc2xml/trunk' ${dir}/xml || exit 1
 
 echo '### checkout(core) ###'
-checkout 'git clone git://github.com/mzp/scheme-abc.git --depth=0' ${dir}/core || exit 1
+checkout 'git clone git@github.com:mzp/scheme-abc.git --depth=0' ${dir}/scm || exit 1
 rm -rf ${dir}/core/.git
 
 echo '### copy driver ###'

@@ -14,11 +14,13 @@ INSTALLATION INSTRUCTIONS
 
 If you type:
 
-   $ omake install
+   $ omake
+   $ (sudo) omake install
 
 then install to a default directory(/usr/local/bin).
 
 Or,you want to install to another directory:
 
-   $ omake install PREFIX=/path/to/
+   $ omake    
+   $ (sudo) omake install PREFIX=/path/to/
 

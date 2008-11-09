@@ -1,0 +1,21 @@
+PREFIX:=/usr/local
+# ------------------------------------------------------------
+.PHONY: all install clean
+.SUBDIRS: xml scm
+
+all: habc-scm habc-xml
+
+habc-scm: scm/src/habc-scm
+	cp scm/src/habc-scm .
+
+habc-xml: xml/habc-xml
+	cp xml/habc-xml .
+
+install: habc-scm habc-xml
+	mkdir -p $(PREFIX)/bin
+	cp -v habc-scm habc-xml habc $(PREFIX)/bin
+
+clean:
+	rm -rf habc-xml habc-scm *~ *.omc .omakedb .omakedb.lock
+
+.DEFAULT: all
