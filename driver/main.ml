@@ -22,6 +22,11 @@ let template =
     ~default:default_template 
     ~metavar:"TEMPLATE" ()
 
+let output =
+  StdOpt.str_option 
+    ~default:"a.swf"
+    ~metavar:"OUTPUT" ()
+
 let verbose =
   StdOpt.store_true ()
 
@@ -30,6 +35,10 @@ let _ =
     ~short_name:'t' 
     ~long_name:"template" 
     ~help:"set swf template name" template;
+  OptParser.add opt_parser
+    ~short_name:'o' 
+    ~long_name:"output"
+    ~help:"set swf output name" output;
   OptParser.add opt_parser
     ~short_name:'V'
     ~long_name:"verbose"
@@ -54,18 +63,18 @@ let chop name =
   with _ ->
     name
 
-let make_temp source ext =
-  Printf.sprintf "%s.%s" (chop source) ext
+let make_temp ext =
+  Printf.sprintf "%s.%s" (chop @@ Opt.get output) ext
 
 let abc_of_scm scm =
   let abc = 
-    make_temp scm "abc" in
+    make_temp "abc" in
     system @@ Printf.sprintf "habc-scm -o%s %s" abc scm;
     abc
 
 let axml_of_abc abc =
   let axml =
-    make_temp abc "axml" in
+    make_temp "axml" in
     system @@ Printf.sprintf "habc-xml %s > %s" abc axml;
     rm abc;
     axml
@@ -81,7 +90,7 @@ let xml_of_axml axml =
       (function "ABC" -> abc | "Label" -> "Main" | s -> s) @@ 
       Std.input_file @@ Opt.get template in
   let xml =
-    make_temp axml "xml" in
+    make_temp "xml" in
   let ch =
     open_out xml in
     Buffer.output_buffer ch buffer;
@@ -91,7 +100,7 @@ let xml_of_axml axml =
   
 let swf_of_xml xml =
   let swf =
-    make_temp xml "swf" in
+    make_temp "swf" in
     system @@ Printf.sprintf "swfmill xml2swf %s %s" xml swf;
     rm xml
 
