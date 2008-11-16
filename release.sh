@@ -37,7 +37,7 @@ rm -rf ${dir}/scm/.git
 status 'copy driver'
 (cd $dir; omake clean)
 cp -rv driver ${dir}
-sed "s/<Version>/${FULL_VERSION}/" driver/main.ml > ${dir}/driver/main.ml
+sed "s/<VERSION>/${FULL_VERSION}/" driver/main.ml > ${dir}/driver/main.ml
 cp -rv extra/* ${dir}
 
 status 'install check'

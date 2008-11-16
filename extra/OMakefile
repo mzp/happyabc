@@ -20,6 +20,6 @@ install: habc-scm habc-xml habc
 	cp -vr lib $(PREFIX)/lib
 
 clean:
-	rm -rf habc-xml habc-scm *~ *.omc .omakedb .omakedb.lock
+	rm -rf habc-xml habc-scm habc *~ *.omc .omakedb .omakedb.lock
 
 .DEFAULT: all
