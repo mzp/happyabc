@@ -1,7 +1,7 @@
 PREFIX:=/usr/local
 # ------------------------------------------------------------
 .PHONY: all install clean
-.SUBDIRS: xml scm
+.SUBDIRS: xml scm driver
 
 all: habc-scm habc-xml
 
@@ -11,9 +11,13 @@ habc-scm: scm/src/habc-scm
 habc-xml: xml/habc-xml
 	cp xml/habc-xml .
 
-install: habc-scm habc-xml
+habc: driver/habc
+	cp driver/habc .
+
+install: habc-scm habc-xml habc
 	mkdir -p $(PREFIX)/bin
 	cp -v habc-scm habc-xml habc $(PREFIX)/bin
+	cp -vr lib $(PREFIX)/lib
 
 clean:
 	rm -rf habc-xml habc-scm *~ *.omc .omakedb .omakedb.lock

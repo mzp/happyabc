@@ -150,3 +150,6 @@ OCAML_OTHER_LIBS += unix
 # OCAML_LIB_FLAGS +=
 #
 .DEFAULT: $(OCamlProgram $(PROGRAM), $(FILES))
+
+clean:
+	rm -rf *.omc *~ *.swf .omakedb* *.opt *.run *.cm[ix] *.o $(PROGRAM)

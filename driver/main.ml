@@ -15,7 +15,7 @@ let default_template =
     if Sys.os_type = "Win32" then
       Filename.concat base "./template.xml"
     else
-      Filename.concat base "../lib/template.xml"
+      Filename.concat base "../lib/habc/template.xml"
 
 let template =
   StdOpt.str_option 
