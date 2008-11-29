@@ -51,7 +51,8 @@ let debug str =
 
 let system cmd =
   debug cmd;
-  ignore @@ Unix.system cmd
+  if Sys.command cmd <> 0 then
+    exit 1
 
 let rm path =
   debug @@ Printf.sprintf "rm %s" path;

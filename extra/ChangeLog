@@ -1,3 +1,7 @@
+Version 0.3.0
+	* Support detecting syntax error
+	* Support detecting unbound variable error
+	
 Version 0.2.0
 	* Suuport build on Windows
 	* Support cond syntax
