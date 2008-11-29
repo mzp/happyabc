@@ -50,9 +50,9 @@ ls ${DIST}/bin/habc-scm || exit 1
 
 status 'tagging'
 
-#svn copy http://www.libspark.org/svn/ocaml/abc2xml/trunk http://www.libspark.org/svn/ocaml/abc2xml/tags/${Tag} -m "Release $Tag"
-# (cd scm; git tag ${Tag}; git push --tags)
-# rm -rf scm
+svn copy http://www.libspark.org/svn/ocaml/abc2xml/trunk http://www.libspark.org/svn/ocaml/abc2xml/tags/${Tag} -m "Release $Tag"
+(cd scm; git tag ${Tag}; git push --tags)
+rm -rf scm
 
 status 'package'
 tar cvjf ${dir}-src.tar.bz2 ${dir}
